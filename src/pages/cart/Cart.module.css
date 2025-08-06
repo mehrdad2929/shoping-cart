@@ -1,0 +1,19 @@
+.container {
+    padding: 1rem;
+}
+
+.backLink {
+    display: inline-block;
+    margin-bottom: 1rem;
+    color: #666;
+    text-decoration: none;
+}
+
+.backLink:hover {
+    color: #333;
+}
+
+
+
+/* Responsive */
+@media (max-width: 768px) {}
