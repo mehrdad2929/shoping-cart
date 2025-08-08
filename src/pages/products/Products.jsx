@@ -1,4 +1,5 @@
 import { Link, useSearchParams, useLoaderData } from "react-router-dom"
+import { useState } from "react"
 import styles from './Products.module.css'
 import { getProducts } from "../../util"
 import { useCart } from "../../CartContext"
@@ -10,7 +11,7 @@ export async function loader() {
 export default function Products() {
     const { cart, addToCart, removeFromCart, getProductCount } = useCart()
     const [searchParams, setSearchParams] = useSearchParams();
-    const typeFilter = searchParams.get("type");
+    const typeFilter = searchParams.get("category");
     const products = useLoaderData()
 
     const handleFilterClick = (category) => {
@@ -21,8 +22,18 @@ export default function Products() {
         setSearchParams({})
     }
 
+    // Function to normalize CSS class names (remove special characters)
+    const getCssClass = (category) => {
+        if (!category) return '';
+        return category
+            .toLowerCase()
+            .replace(/'/g, '')  // Remove apostrophes
+            .replace(/\s+/g, '-')  // Replace spaces with hyphens
+            .replace(/[^\w-]/g, '');  // Remove other special chars
+    }
+
     const displayedproducts = typeFilter
-        ? products.filter(product => product.category === typeFilter.toLowerCase())
+        ? products.filter(product => product.category === typeFilter)
         : products;
 
     const productsEls = displayedproducts.map(product => (
@@ -46,7 +57,7 @@ export default function Products() {
                         ${product.price}
                     </p>
                     {product.category && (
-                        <span className={`${styles.productType} ${styles[product.category]}`}>
+                        <span className={`${styles.productType} ${styles[getCssClass(product.category)]}`}>
                             {product.category}
                         </span>
                     )}
@@ -99,10 +110,10 @@ export default function Products() {
 
             <div className={styles.filtersContainer}>
                 <button
-                    onClick={() => handleFilterClick("mens-clothing")}
-                    className={`${styles.filterButton} ${typeFilter === "mens-clothing" ? styles.active : ""}`}
+                    onClick={() => handleFilterClick("men's clothing")}
+                    className={`${styles.filterButton} ${typeFilter === "men's clothing" ? styles.active : ""}`}
                 >
-                    mens-clothing
+                    men's clothing
                 </button>
                 <button
                     onClick={() => handleFilterClick("jewelery")}
@@ -117,10 +128,10 @@ export default function Products() {
                     electronics
                 </button>
                 <button
-                    onClick={() => handleFilterClick("womens-clothing")}
-                    className={`${styles.filterButton} ${typeFilter === "womens-clothing" ? styles.active : ""}`}
+                    onClick={() => handleFilterClick("women's clothing")}
+                    className={`${styles.filterButton} ${typeFilter === "women's clothing" ? styles.active : ""}`}
                 >
-                    womens-clothing
+                    women's clothing
                 </button>
                 {typeFilter && (
                     <button
