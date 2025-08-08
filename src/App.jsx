@@ -15,6 +15,7 @@ import { requireAuth } from "./util.js"
 import Login, { loginAction, loginLoader } from "./pages/Login.jsx"
 import Logout, { logoutAction } from "./pages/Logout.jsx"
 import Cart, { loader as cartLoader } from "./pages/cart/Cart.jsx"
+import { CartProvider } from "./CartContext.jsx"
 const router = createBrowserRouter(createRoutesFromElements(
     <Route path="/" element={<Layout />} errorElement={<Error />}>
         <Route index element={<Home />} />
@@ -60,7 +61,9 @@ const router = createBrowserRouter(createRoutesFromElements(
 ))
 function App() {
     return (
-        <RouterProvider router={router} />
+        < CartProvider >
+            <RouterProvider router={router} />
+        </CartProvider >
     )
 }
 export default App;

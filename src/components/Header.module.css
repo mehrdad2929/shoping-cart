@@ -1,33 +1,35 @@
 .header {
-	background-color: white;
+    background-color: white;
 }
 
 .navbar {
-	display: flex;
-	flex-direction: column;
-	background-color: white;
-	padding: 8px 12px;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 8px 12px;
+    position: sticky;
+    top: 0;
 }
 
 .sitelogo {
-	background-color: blue;
+    background-color: blue;
 }
 
 .navlink {
-	background-color: greenyellow;
-	margin: 11px;
-	text-decoration: none;
-	/* Remove underline */
-	padding: 8px 12px;
-	border-radius: 4px;
-	transition: background-color 0.2s ease;
+    background-color: greenyellow;
+    margin: 11px;
+    text-decoration: none;
+    /* Remove underline */
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
 }
 
 .navlink:hover {
-	background-color: lightgreen;
+    background-color: lightgreen;
 }
 
 .navlink.active {
-	background-color: red;
-	color: white;
+    background-color: red;
+    color: white;
 }

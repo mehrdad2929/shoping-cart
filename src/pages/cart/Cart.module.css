@@ -1,5 +1,8 @@
+/* Cart.module.css */
 .container {
     padding: 1rem;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .backLink {
@@ -13,7 +16,124 @@
     color: #333;
 }
 
+.cartItems {
+    margin-bottom: 2rem;
+}
 
+.cartItem {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+    gap: 1rem;
+}
+
+.itemImage {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.itemDetails {
+    flex: 1;
+}
+
+.itemDetails h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
+}
+
+.itemPrice {
+    margin: 0;
+    color: #666;
+    font-weight: bold;
+}
+
+.quantityControls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.quantityBtn {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ddd;
+    background: #f9f9f9;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quantityBtn:hover {
+    background: #eee;
+}
+
+.quantity {
+    min-width: 30px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.itemTotal {
+    font-weight: bold;
+    min-width: 80px;
+    text-align: right;
+}
+
+.cartSummary {
+    border-top: 2px solid #333;
+    padding-top: 1rem;
+    text-align: right;
+}
+
+.totalItems,
+.totalPrice {
+    margin: 0.5rem 0;
+    font-size: 1.1rem;
+}
+
+.totalPrice {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.purchaseBtn {
+    background: #4caf50;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 1rem;
+}
+
+.purchaseBtn:hover {
+    background: #45a049;
+}
 
 /* Responsive */
-@media (max-width: 768px) {}
+@media (max-width: 768px) {
+    .cartItem {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .itemImage {
+        width: 60px;
+        height: 60px;
+    }
+
+    .quantityControls {
+        align-self: flex-end;
+    }
+
+    .itemTotal {
+        align-self: flex-end;
+    }
+}

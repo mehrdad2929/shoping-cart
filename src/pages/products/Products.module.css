@@ -2,6 +2,7 @@
     padding: 2rem;
     max-width: 1200px;
     margin: 0 auto;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 .productsTitle {
@@ -62,25 +63,38 @@
 
 .productsGrid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 2rem;
     margin-bottom: 3rem;
 }
 
-.productCard {
+.productCardContainer {
+    display: flex;
+    flex-direction: column;
     background-color: white;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    text-decoration: none;
-    color: inherit;
     transition: all 0.3s ease;
-    position: relative;
+    min-height: 450px;
 }
 
-.productCard:hover {
+.productCardContainer:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.productCard {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.imageContainer {
+    position: relative;
+    overflow: hidden;
 }
 
 .productImage {
@@ -92,36 +106,47 @@
 
 .productInfo {
     padding: 1.5rem;
-    position: relative;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-.productInfo h3 {
+.productTitle {
     margin: 0 0 0.5rem 0;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: 600;
     color: #333;
+    line-height: 1.3;
 }
 
-.productInfo p {
-    margin: 0;
+.productPrice {
+    margin: 0.5rem 0 0 0;
     font-size: 1.2rem;
     font-weight: 700;
     color: #2c3e50;
 }
 
-.productType {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    padding: 0.25rem 0.75rem;
-    border-radius: 4px;
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: white;
-    text-transform: uppercase;
+.productPrice span {
+    font-weight: 400;
+    color: #666;
 }
 
-/* product type colors */
+.productType {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 0.75rem;
+    align-self: flex-start;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Product type colors */
 .jewlery {
     background-color: #E17654;
 }
@@ -131,11 +156,58 @@
 }
 
 .womens-Clothing {
-    background-color: #161616;
+    background-color: #8B5CF6;
 }
 
 .electronics {
     background-color: #115E59;
+}
+
+.inlineQuantityControls {
+    display: flex;
+    text-align: center;
+    justify-items: center;
+    align-items: center;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    overflow: hidden;
+    background: white;
+}
+
+.quantityBtn {
+    background: #f3f4f6;
+    border: none;
+    padding: 0.5rem 0.75rem;
+    cursor: pointer;
+    font-weight: 600;
+    color: #374151;
+    transition: background 0.2s ease;
+    min-width: 36px;
+}
+
+.quantityBtn:hover {
+    background: #e5e7eb;
+}
+
+.quantityBtn:disabled {
+    background: #f9fafb;
+    color: #9ca3af;
+    cursor: not-allowed;
+}
+
+.quantityInput {
+    border: none;
+    padding: 0.5rem;
+    text-align: center;
+    width: 60px;
+    font-weight: 600;
+    background: white;
+    color: #1f2937;
+}
+
+.quantityInput:focus {
+    outline: none;
+    background: #fef3c7;
 }
 
 .loading {
@@ -151,10 +223,14 @@
     text-decoration: none;
     color: #666;
     margin-top: 2rem;
+    padding: 1rem;
+    border-radius: 8px;
+    transition: all 0.2s ease;
 }
 
 .toTopLink:hover {
     color: #333;
+    background-color: #f8f9fa;
 }
 
 .toTopLink p {
@@ -173,7 +249,7 @@
     }
 
     .productsGrid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 1.5rem;
     }
 
@@ -186,15 +262,23 @@
     .filterButton {
         flex-shrink: 0;
     }
+
+    .productCardContainer {
+        min-height: 400px;
+    }
 }
 
 @media (max-width: 480px) {
-    .productCard {
-        margin: 0 -1rem;
-        border-radius: 0;
+    .productsGrid {
+        grid-template-columns: 1fr;
     }
 
     .productsSection {
-        padding: 1rem 0;
+        padding: 1rem 0.5rem;
+    }
+
+    .productCardContainer {
+        margin: 0;
+        border-radius: 8px;
     }
 }
